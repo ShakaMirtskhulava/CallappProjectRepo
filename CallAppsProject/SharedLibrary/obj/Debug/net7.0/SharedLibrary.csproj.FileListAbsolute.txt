@@ -1,0 +1,12 @@
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\bin\Debug\net7.0\SharedLibrary.deps.json
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\bin\Debug\net7.0\SharedLibrary.dll
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\bin\Debug\net7.0\SharedLibrary.pdb
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.csproj.AssemblyReference.cache
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.AssemblyInfoInputs.cache
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.AssemblyInfo.cs
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.csproj.CoreCompileInputs.cache
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.dll
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\refint\SharedLibrary.dll
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\SharedLibrary.pdb
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\SharedLibrary\obj\Debug\net7.0\ref\SharedLibrary.dll

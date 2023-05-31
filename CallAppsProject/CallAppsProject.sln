@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEBAPI", "WEBAPI\WEBAPI.csproj", "{868DC71E-26FA-49B6-A12A-440AC6F7A349}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{FB37D022-F4B0-4381-B978-C9D25C716CC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{869A9C68-A109-478C-9664-FFC657DCBD06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{868DC71E-26FA-49B6-A12A-440AC6F7A349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868DC71E-26FA-49B6-A12A-440AC6F7A349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868DC71E-26FA-49B6-A12A-440AC6F7A349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868DC71E-26FA-49B6-A12A-440AC6F7A349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB37D022-F4B0-4381-B978-C9D25C716CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB37D022-F4B0-4381-B978-C9D25C716CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB37D022-F4B0-4381-B978-C9D25C716CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB37D022-F4B0-4381-B978-C9D25C716CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{869A9C68-A109-478C-9664-FFC657DCBD06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869A9C68-A109-478C-9664-FFC657DCBD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869A9C68-A109-478C-9664-FFC657DCBD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869A9C68-A109-478C-9664-FFC657DCBD06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45D2EF48-7D8B-490C-A448-81C88A652AF9}
+	EndGlobalSection
+EndGlobal
