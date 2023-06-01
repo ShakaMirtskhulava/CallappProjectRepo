@@ -7,12 +7,12 @@ using WEBAPI.Services;
 
 namespace WEBAPI.Helpers
 {
-    public class AuthenticationHelper : IAuthenticationHelper
+    public class APIAuthenticationHelper : IAPIAuthenticationHelper
     {
         private readonly IConfiguration _configuration;
 
 
-        public AuthenticationHelper(IConfiguration configuration)
+        public APIAuthenticationHelper(IConfiguration configuration)
         {
             _configuration = configuration;
         }

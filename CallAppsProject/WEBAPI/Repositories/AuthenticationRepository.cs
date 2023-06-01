@@ -7,35 +7,55 @@ namespace WEBAPI.Repositories
 {
     public class AuthenticationRepository : Repository, IAuthenticationRepository
     {
-
-
-
         public AuthenticationRepository(AppDbContext dbContext) : base(dbContext)
         {}
 
-        public async Task<bool> CreateAPIUserAsync(string userName,string passwordHash,string jwt)
+
+        public async Task<User> CreateUserAsync(User user)
         {
-            var targetUser = await GetAPIUserAsync(userName, passwordHash);
-            if (targetUser != null)
-                return false;
+            await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
+            return user;
+        }
 
-            var user = new APIUser
-            {
-                UserName = userName,
-                PasswordHash = passwordHash,
-                JWT = jwt
-            };
+        public async Task<UserProfile> CreateUserProfileAsync(UserProfile userProfile)
+        {
+            await _dbContext.UserProfiles.AddAsync(userProfile);
+            await _dbContext.SaveChangesAsync();
+            return userProfile;
+        }
 
-            await _dbContext.APIUsers.AddAsync(user);
+        public async Task<UserProfile?> GetFullUserProfileAsync(string personalNumber){
             
+            return await _dbContext.UserProfiles
+                        .Include(up => up.User)
+                        .FirstOrDefaultAsync(up => up.PersonalNumber == personalNumber);
+        }
+
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            _dbContext.Users.Update(user);
+            await _dbContext.SaveChangesAsync();
+            return user;
+        }
+
+        public async Task<UserProfile> UpdateUserProfileAsync(UserProfile userProfile)
+        {
+            _dbContext.UserProfiles.Update(userProfile);
+            await _dbContext.SaveChangesAsync();
+            return userProfile;
+        }
+
+        public bool DeleteUserProfile(UserProfile userProfile)
+        {
+            _dbContext.UserProfiles.Remove(userProfile);
             return true;
         }
 
-        public async Task<APIUser?> GetAPIUserAsync(string userName, string passwordHash)
+        public bool DeleteUser(User user)
         {
-            var user = await _dbContext.APIUsers.FirstOrDefaultAsync(u => u.UserName == userName && u.PasswordHash == passwordHash);
-            
-            return user;
+            _dbContext.Users.Remove(user);
+            return true;
         }
 
 

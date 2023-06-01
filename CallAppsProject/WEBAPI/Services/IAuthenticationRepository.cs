@@ -4,7 +4,12 @@ namespace WEBAPI.Services
 {
     public interface IAuthenticationRepository : IRepository
     {
-        Task<bool> CreateAPIUserAsync(string userName, string passwordHash, string jwt);
-        Task<APIUser?> GetAPIUserAsync(string userName, string passwordHash);
+        Task<User> CreateUserAsync(User user);
+        Task<UserProfile> CreateUserProfileAsync(UserProfile userProfile);
+        Task<UserProfile?> GetFullUserProfileAsync(string personalNumber);
+        Task<User> UpdateUserAsync(User user);
+        Task<UserProfile> UpdateUserProfileAsync(UserProfile userProfile);
+        bool DeleteUserProfile(UserProfile userProfile);
+        bool DeleteUser(User user);
     }
 }

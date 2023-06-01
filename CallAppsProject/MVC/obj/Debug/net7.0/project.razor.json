@@ -1,6 +1,6 @@
 {
-  "SerializedFilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\WEBAPI\\obj\\Debug\\net7.0\\project.razor.json",
-  "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\WEBAPI\\WEBAPI.csproj",
+  "SerializedFilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\obj\\Debug\\net7.0\\project.razor.json",
+  "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\MVC.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "7.0",
@@ -18642,7 +18642,43 @@
     ],
     "CSharpLanguageVersion": 1100
   },
-  "RootNamespace": "WEBAPI",
-  "Documents": [],
+  "RootNamespace": "MVC",
+  "Documents": [
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.3"
 }
