@@ -11,5 +11,7 @@ namespace WEBAPI.Services
         Task<UserProfile> UpdateUserProfileAsync(UserProfile userProfile);
         bool DeleteUserProfile(UserProfile userProfile);
         bool DeleteUser(User user);
+        Task<UserProfile?> GetFullUserProfileAsync(string userName, string password);
+        Task<List<UserProfile>> GetAllUserProfileAsync();
     }
 }

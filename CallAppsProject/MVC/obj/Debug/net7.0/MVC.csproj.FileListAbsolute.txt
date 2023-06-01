@@ -550,3 +550,6 @@ D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsPr
 D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

@@ -6,5 +6,6 @@ namespace MVC.Services
     {
         string GenerateJWT(string personalNumber);
         Task<UserProfileDTO?> GetCurrentUserProfileDTOAsyn(HttpRequest httpRequest);
+        void RemoveJWTCookies(HttpResponse httpResponse);
     }
 }

@@ -1,4 +1,39 @@
-﻿@{
+﻿@using MVC.ViewModels;
+@model IndexVM
+@{
     ViewData["Title"] = "Home Page";
 }
 
+
+
+@if(Model.CurrentUserPersonalNumber != null)
+{
+    <a class="btn btn-primary" asp-action="Logout" asp-controller="Authentication">Logout</a>
+    <a class="btn btn-warning" asp-action="ProfilePage" asp-controller="User" asp-route-personalNumber="@Model.CurrentUserPersonalNumber">Profile</a>
+}
+else
+{
+    <a class="btn btn-primary" asp-action="Login" asp-controller="Authentication">Login</a>
+}
+
+<div style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;">
+
+
+    @if(Model.IndexUserProfileVMs != null && Model.IndexUserProfileVMs.Count > 0)
+    {
+        <h1>Existing Users</h1>
+        @foreach(var item in Model.IndexUserProfileVMs)
+        {
+            <a asp-action="ProfilePage" asp-controller="User" asp-route-personalNumber="@item.PersonalNumber" 
+                        style="width:100%;border:solid;">
+                <h1>@item.PersonalNumber</h1>
+                <h1>@item.FirstName</h1>
+                <h1>@item.LastName</h1>
+            </a>
+        }
+
+    }
+    else{
+        <h1>There are no users</h1>
+    }
+</div>

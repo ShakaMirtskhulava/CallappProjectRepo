@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using SharedLibrary.DTOs;
 using WEBAPI.Models;
 using WEBAPI.Services;
@@ -59,6 +60,39 @@ namespace WEBAPI.Controllers
             }
         }
 
+        [HttpGet("GetAllUserProfile")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<GetAllUserProfileDTO>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllUserProfile()
+        {
+            try
+            {
+                var userProfiles = await _authenticationRepository.GetAllUserProfileAsync();
+
+                if (userProfiles == null)
+                    return Ok();
+                
+                List<GetAllUserProfileDTO> upDTOs = new();
+                foreach(var userProfile in userProfiles)
+                {
+                    upDTOs.Add(
+                        new GetAllUserProfileDTO
+                        {
+                            personalNumber = userProfile.PersonalNumber,
+                            firstName = userProfile.Firstname,
+                            lastName = userProfile.Lastname
+                        }
+                    );
+                }
+
+                return Ok(upDTOs);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("GetUserProfile")]
         [ProducesResponseType(StatusCodes.Status200OK,Type = typeof(UserProfileDTO))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -85,6 +119,38 @@ namespace WEBAPI.Controllers
                 return Ok(result);
             }
             catch (Exception ex){
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetUserProfileByUserNameAndPassword")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserProfileDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetUserProfileByUserNameAndPassword(string userName,string password)
+        {
+            try
+            {
+
+                var userProfile = await _authenticationRepository.GetFullUserProfileAsync(userName,password);
+                if (userProfile == null)
+                    return NotFound("User profile not found");
+
+                //Due to app logic userProfile.User newer will be null so we can use null forgiving operator '!'
+                var result = new UserProfileDTO
+                {
+                    UserName = userProfile.User!.Username,
+                    Password = userProfile.User.Password,
+                    Email = userProfile.User.Email,
+                    IsActive = userProfile.User.IsActive,
+                    FirstName = userProfile.Firstname,
+                    LastName = userProfile.Lastname,
+                    PersonalNumber = userProfile.PersonalNumber
+                };
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }

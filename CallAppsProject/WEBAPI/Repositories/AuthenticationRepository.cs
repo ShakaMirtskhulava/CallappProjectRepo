@@ -25,11 +25,23 @@ namespace WEBAPI.Repositories
             return userProfile;
         }
 
+        public async Task<List<UserProfile>> GetAllUserProfileAsync()
+        {
+            return await _dbContext.UserProfiles.ToListAsync();
+        }
+
         public async Task<UserProfile?> GetFullUserProfileAsync(string personalNumber){
             
             return await _dbContext.UserProfiles
                         .Include(up => up.User)
                         .FirstOrDefaultAsync(up => up.PersonalNumber == personalNumber);
+        }
+
+        public async Task<UserProfile?> GetFullUserProfileAsync(string userName,string password)
+        {
+            return await _dbContext.UserProfiles
+                        .Include(up => up.User)
+                        .FirstOrDefaultAsync(up => up.User.Username == userName && up.User.Password == password);
         }
 
         public async Task<User> UpdateUserAsync(User user)

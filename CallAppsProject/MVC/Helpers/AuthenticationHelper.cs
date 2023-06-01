@@ -60,6 +60,11 @@ namespace MVC.Helpers
 
         }
 
+        public void RemoveJWTCookies(HttpResponse httpResponse)
+        {
+            httpResponse.Cookies.Delete("userJWT");
+        }
+
         public string GenerateJWT(string personalNumber)
         {
             var claims = new List<Claim>

@@ -3,11 +3,10 @@ using MVC.Services;
 using MVC.ViewModels;
 using Newtonsoft.Json.Linq;
 using SharedLibrary.DTOs;
-using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
-using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace MVC.Controllers
 {
@@ -27,7 +26,7 @@ namespace MVC.Controllers
             _jwt = _configuration["API:JWT"]!;
         }
 
-
+        
         [HttpGet]
         public IActionResult Register()
         {
@@ -54,7 +53,7 @@ namespace MVC.Controllers
                     LastName = VM.Lastname,
                     PersonalNumber = VM.PersonalNumber
                 };
-            
+                
                 using(var client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _jwt);
@@ -75,7 +74,7 @@ namespace MVC.Controllers
                             return BadRequest("User can't be found");
 
                         var userJWT = _authenticationHelper.GenerateJWT(userProfile.PersonalNumber);
-                        Response.Cookies.Append("userJWT", userJWT, new CookieOptions { HttpOnly = true,Expires = DateTime.Now.AddMinutes(10)});
+                        Response.Cookies.Append("userJWT", userJWT, new CookieOptions { HttpOnly = true, Expires = DateTime.Now.AddDays(10) });
 
                         return RedirectToAction("Login");
                     }
@@ -93,16 +92,72 @@ namespace MVC.Controllers
             }
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Login()
         {
-            var userProfileDto = await _authenticationHelper.GetCurrentUserProfileDTOAsyn(Request);
-            if (userProfileDto != null)
-                return RedirectToAction("ProfilePage", "Profile", userProfileDto);
-            
-
+            //Check if the user is authenticated
+            var currentUser = await _authenticationHelper.GetCurrentUserProfileDTOAsyn(Request);
+            if (currentUser != null)
+                return RedirectToAction("ProfilePage", "User", new { personalNumber = currentUser.PersonalNumber });
 
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginVM VM)
+        {
+            try
+            {
+                if(!ModelState.IsValid)
+                    return View(VM);
+
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _jwt);
+
+                    var url = _apiRootUrl + @$"Authentication/GetUserProfileByUserNameAndPassword?userName={VM.UserName}&password={VM.Password}";
+
+                    var response = await client.GetAsync(url);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        ModelState.AddModelError("UserName", "User can't be found");
+                        return View(VM);
+                    }
+
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseObject = JObject.Parse(responseContent);
+                    var userProfile = responseObject.ToObject<UserProfileDTO>();
+                    if (userProfile == null)
+                        return NotFound("User can't be found");
+
+                    var userJWT = _authenticationHelper.GenerateJWT(userProfile.PersonalNumber);
+                    Response.Cookies.Append("userJWT", userJWT, new CookieOptions { HttpOnly = true, Expires = DateTime.Now.AddDays(10) });
+
+                    return RedirectToAction("ProfilePage", "User", new { personalNumber = userProfile.PersonalNumber });
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            try
+            {
+                _authenticationHelper.RemoveJWTCookies(Response);
+
+                return RedirectToAction("Login");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
     }
 }
