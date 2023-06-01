@@ -1,7 +1,14 @@
+using MVC.Helpers;
+using MVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
 
 var app = builder.Build();
 

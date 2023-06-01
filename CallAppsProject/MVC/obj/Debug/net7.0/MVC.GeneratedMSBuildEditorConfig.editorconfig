@@ -12,9 +12,13 @@ build_property.RootNamespace = MVC
 build_property.ProjectDir = D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\University Stuff\C#\ASP.Net Core\CallappProject\CallappProjectRepo\CallAppsProject\MVC
 build_property._RazorSourceGeneratorDebug = 
+
+[D:/University Stuff/C\#/ASP.Net Core/CallappProject/CallappProjectRepo/CallAppsProject/MVC/Views/Authentication/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [D:/University Stuff/C\#/ASP.Net Core/CallappProject/CallappProjectRepo/CallAppsProject/MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=

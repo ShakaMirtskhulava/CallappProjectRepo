@@ -18645,6 +18645,11 @@
   "RootNamespace": "MVC",
   "Documents": [
     {
+      "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\Authentication\\Register.cshtml",
+      "TargetPath": "Views\\Authentication\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\University Stuff\\C#\\ASP.Net Core\\CallappProject\\CallappProjectRepo\\CallAppsProject\\MVC\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
