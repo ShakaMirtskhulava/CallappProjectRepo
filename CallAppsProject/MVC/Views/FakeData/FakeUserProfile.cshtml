@@ -1,0 +1,143 @@
+﻿@model MVC.ViewModels.FakeUserProfileVM
+
+@{
+    ViewData["Title"] = "FakeUserProfile";
+}
+
+<h1>FakeUser Profile</h1>
+
+<a class="btn btn-warning" asp-action="Index">Back To The Users List</a>
+
+<div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;padding:10px;row-gap:20px;">
+
+    <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;border:solid;width:100%;">
+        <div class="UserData" style="border:solid;width:100%;">
+            <h1>User Info</h1>
+            <h3>@Model.User.Id</h3>
+            <h3>@Model.User.Name</h3>
+            <h3>@Model.User.Username</h3>
+            <h3>@Model.User.Email</h3>
+            <h3>@Model.User.</h3>
+            <h3>@Model.User.Phone</h3>
+            <h3>@Model.User.Website</h3>
+        </div>
+        <div class="UserAddresss" style="border:solid;width:100%;">
+            <h1>Address Info</h1>
+            <h5>@Model.User.Address?.Street</h5>
+            <h5>@Model.User.Address?.Suite</h5>
+            <h5>@Model.User.Address?.City</h5>
+            <h5>@Model.User.Address?.Zipcode</h5>
+            <h5>@Model.User.Address?.Geo?.Lat</h5>
+            <h5>@Model.User.Address?.Geo?.Lat</h5>
+        </div>
+        <div class="UserCompany" style="border:solid;width:100%;">
+            <h1>Company Info</h1>
+            <h5>@Model.User.Company?.Name</h5>
+            <h5>@Model.User.Company?.CatchPhrase</h5>
+            <h5>@Model.User.Company?.Bs</h5>
+        </div>
+    </div>
+
+    <h1>User Posts</h1>
+    <div style="width:100%;height:500px;overflow-y: scroll;border:solid;">
+        @if(Model.UserPosts != null && Model.UserPosts.Count() > 0)
+        {   
+            <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;width:100%;padding:20px;row-gap:20px;">
+            
+                @foreach(var post in Model.UserPosts)
+                {
+                    <div class="PostDiv" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;border:solid;width:100%;">
+                        <h4 style="width:100%;">PostId: @post.id</h4>
+                        <h4 style="width:100%;">Post Title: @post.title</h4>
+                        <h4 style="width:100%;">Post Body: @post.body</h4>
+                        @if(post.Comments != null && post.Comments.Count() > 0)
+                        {
+                            <div style="width:100%;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;padding:20px;row-gap:10px;">
+                                <h3>Post Comments:</h3>
+                                @foreach(var comment in post.Comments)
+                                {
+                                    <div class="CommentDiv" style="width:100%;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;border:solid;">
+                                        <h4 style="width:100%;">CommentId: @comment.id</h4>
+                                        <h4 style="width:100%;">Comment Name: @comment.name</h4>
+                                        <h4 style="width:100%;">Comment Email: @comment.email</h4>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <h1>This post has no comments</h1>
+                        }
+                    </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <h1>This user has no posts</h1>
+        }
+    </div>
+
+    <h1>User Todos</h1>
+    <div style="width:100%;height:500px;overflow-y: scroll;border:solid;">
+        @if (Model.Todos != null && Model.Todos.Count() > 0)
+        {
+            <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;width:100%;padding:20px;row-gap:10px;">
+                @foreach (var todo in Model.Todos)
+                {
+                    <div class="TodoDiv" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;border:solid;width:100%;padding:20px;">
+                        <h4 style="width:100%;">Todo Id: @todo.id</h4>
+                        <h4 style="width:100%;">Todo Title: @todo.title</h4>
+                        <h4 style="width:100%;">Todo Complete: @todo.completed</h4>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h1>This user has no Todos</h1>
+        }
+    </div>
+
+    <h1>User Albums</h1>
+    <div style="width:100%;height:500px;overflow-y: scroll;border:solid;">
+        @if(Model.Albums != null && Model.Albums.Count() > 0)
+        {
+            <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;width:100%;padding:20px;">
+                @foreach(var album in Model.Albums)
+                {
+                    <div class="AlbumDiv">
+                        <h4>AlbumId: @album.id</h4>
+                        <h4>Album Title: @album.title</h4>
+                        @if(album.Photos != null && album.Photos.Count() > 0)
+                        {
+                            <div style="width:100%;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;padding:20px;row-gap:10px;">
+                                <h3 style="width:100%;">Album Photos</h3>
+                                @foreach(var photo in album.Photos)
+                                {
+                                    <div class="PhotoDiv" style="width:100%;border:solid;">
+                                        <h4 style="width:100%;">Photo Id: @photo.id</h4>
+                                        <h4 style="width:100%;">Photo Title: @photo.title</h4>
+                                        <label asp-for="@photo.url">Main Photo</label>
+                                        <img src="@photo.url" width="200" />
+                                        <label asp-for="@photo.thumbnailUrl">Thumbnail</label>
+                                        <img src="@photo.thumbnailUrl" width="200" />
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <h1>This album has no photos</h1>
+                        }
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h1>This user has no albums</h1>
+        }
+    </div>
+</div>

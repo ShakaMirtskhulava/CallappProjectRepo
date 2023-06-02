@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVC.Models.FakeUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Users from the given API</h1>
+
+<div class="SearchUser">
+    <label for="UserIdIF">Search User By Id</label>
+    <input type="number" id="UserIdIF" placeholder="userId" /> 
+    <a id="SearchBtn" class="btn btn-warning">Search</a>
+    <span id="UserIdSpan" class="text text-danger" style="display:none;">Specify the user id</span>
+</div>
+
+<script>
+    let searchBtn = document.getElementById("SearchBtn");
+
+    searchBtn.addEventListener('click',() => {
+        let userId = document.getElementById("UserIdIF").value;
+        if(userId != ""){
+            window.location.href = "/FakeData/FakeUserProfile?userId=" + userId;
+        }
+        let userIdSpan = document.getElementById("UserIdSpan");
+        userIdSpan.style.display = "block";
+    });
+
+</script>
+
+<div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;border:solid;padding:10px;row-gap:20px;">
+    @foreach(var user in Model)
+    {
+        <a asp-action="FakeUserProfile" asp-route-userId="@user.Id" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;border:solid;width:100%;">
+            <div class="UserData" style="border:solid;width:100%;">
+                <h3>UserId: @user.Id</h3>
+                <h3>Name: @user.Name</h3>
+                <h3>Username: @user.Username</h3>
+                <h3>Email: @user.Email</h3>
+                <h3>Phone Number: @user.Phone</h3>
+                <h3>Website: @user.Website</h3>
+            </div>
+        </a>
+    }
+
+</div>
